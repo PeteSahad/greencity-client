@@ -37,6 +37,28 @@
     "typescript": "2.0.3"
   },
   "description": "Green City: Lasst uns umdenken!",
-  "cordovaPlugins": [],
-  "cordovaPlatforms": []
+  "cordovaPlugins": [
+    "cordova-plugin-geolocation",
+    "cordova-plugin-compat",
+    "cordova-plugin-mauron85-background-geolocation",
+    {
+      "id": "phonegap-plugin-push",
+      "locator": "phonegap-plugin-push",
+      "variables": {
+        "SENDER_ID": "815643392992"
+      }
+    },
+    "cordova-plugin-camera",
+    "cordova-plugin-file",
+    "cordova-plugin-file-transfer",
+    "ionic-plugin-deploy",
+    "cordova-plugin-splashscreen"
+  ],
+  "cordovaPlatforms": [
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    }
+  ]
 }
