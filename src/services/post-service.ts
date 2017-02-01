@@ -4,7 +4,6 @@ import { AuthProvider } from './../providers/auth-provider';
 import { Geolocation, Transfer } from 'ionic-native';
 import { Http } from '@angular/http';
 import { Injectable } from "@angular/core";
-import { POSTS } from "./mock-posts";
 
 @Injectable()
 export class PostService {

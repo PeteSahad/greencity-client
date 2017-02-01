@@ -1,27 +1,24 @@
-import { DailytippProvider } from './../../.tmp/providers/dailytipp-provider';
-import { ChallengeDetailPage } from './../pages/challenge-detail/challenge-detail';
-import { RankingPage } from './../pages/ranking/ranking';
-import { RegisterPage } from './../../.tmp/pages/register/register';
-import { StatisticsPage } from './../pages/statistics/statistics';
-import { PostPage } from './../pages/post/post';
-import { UserService } from './../services/user-service';
+import {DailytippProvider} from './../../.tmp/providers/dailytipp-provider';
+import {ChallengeDetailPage} from './../pages/challenge-detail/challenge-detail';
+import {RankingPage} from './../pages/ranking/ranking';
+import {RegisterPage} from './../../.tmp/pages/register/register';
+import {StatisticsPage} from './../pages/statistics/statistics';
+import {PostPage} from './../pages/post/post';
+import {UserService} from './../services/user-service';
 
-import { MapPage } from './../pages/map/map';
-import { CouponsPage } from './../pages/coupons/coupons';
-import { ChallengesPage } from './../pages/challenges/challenges';
+import {CouponsPage} from './../pages/coupons/coupons';
+import {ChallengesPage} from './../pages/challenges/challenges';
 
-import { AuthProvider } from './../providers/auth-provider';
-import { Component } from '@angular/core';
-import { Platform, NavController } from 'ionic-angular';
-import { ViewChild } from '@angular/core';
-import { StatusBar, Splashscreen, Push, LocalNotifications } from 'ionic-native';
+import {AuthProvider} from './../providers/auth-provider';
+import {Component} from '@angular/core';
+import {Platform} from 'ionic-angular';
+import {ViewChild} from '@angular/core';
+import {StatusBar, Splashscreen, Push, LocalNotifications} from 'ionic-native';
 
 // import page
-import { HomePage } from '../pages/home/home';
-import { UserPage } from '../pages/user/user';
-import { NotificationsPage } from '../pages/notifications/notifications';
-import { SettingPage } from '../pages/setting/setting';
-import { LoginPage } from '../pages/login/login';
+import {HomePage} from '../pages/home/home';
+import {UserPage} from '../pages/user/user';
+import {SettingPage} from '../pages/setting/setting';
 
 
 @Component({
@@ -118,9 +115,9 @@ export class MyApp {
           }
 
           if (data.postId != undefined) {
-            this.nav.push(PostPage, { id: parseInt(data.postId) });
+            this.nav.push(PostPage, {id: parseInt(data.postId)});
           } else if (data.challengeId != undefined) {
-            this.nav.push(ChallengeDetailPage, { id: parseInt(data.challengeId) });
+            this.nav.push(ChallengeDetailPage, {id: parseInt(data.challengeId)});
           }
 
 
@@ -142,7 +139,6 @@ export class MyApp {
           text: 'Bitte nimm an der Umfrage teil.',
           at: new Date(date.getTime() + (3600000))
         })
-
 
 
         LocalNotifications.schedule({
@@ -169,7 +165,6 @@ export class MyApp {
         })
 
 
-
         LocalNotifications.schedule({
           id: 5,
           title: 'Umfrage',
@@ -186,7 +181,6 @@ export class MyApp {
       }
 
 
-
       // hide splash screen
       this.hideSplashScreen();
     });
@@ -200,7 +194,7 @@ export class MyApp {
 
   // on click, go to user timeline
   viewUser(userId) {
-    this.nav.push(UserPage, { id: userId })
+    this.nav.push(UserPage, {id: userId})
   }
 
   // hide splash screen

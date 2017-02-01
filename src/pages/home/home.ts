@@ -1,17 +1,14 @@
-import { EcoHeaderComponent } from './../../components/eco-header/eco-header';
-import { WelcomeSliderComponent } from './../../components/welcome-slider/welcome-slider';
-import { DailytippProvider } from './../../providers/dailytipp-provider';
-import { PositionComponent } from './../../components/position/position';
-import { AuthProvider } from './../../providers/auth-provider';
-import { TrackingComponent } from './../../components/tracking/tracking';
-import { Geolocation } from 'ionic-native';
-import { CategoryProvider } from './../../providers/category-provider';
-import { CameraComponent } from './../../components/camera/camera';
-import { Component } from '@angular/core';
-import { NavController, ModalController, Platform, AlertController, LoadingController } from 'ionic-angular';
-import { PostService } from '../../services/post-service';
-import { PostPage } from '../post/post';
-import { UserPage } from '../user/user';
+import {DailytippProvider} from './../../providers/dailytipp-provider';
+import {PositionComponent} from './../../components/position/position';
+import {AuthProvider} from './../../providers/auth-provider';
+import {TrackingComponent} from './../../components/tracking/tracking';
+import {CategoryProvider} from './../../providers/category-provider';
+import {CameraComponent} from './../../components/camera/camera';
+import {Component} from '@angular/core';
+import {NavController, ModalController, AlertController, LoadingController} from 'ionic-angular';
+import {PostService} from '../../services/post-service';
+import {PostPage} from '../post/post';
+import {UserPage} from '../user/user';
 /*
  Generated class for the LoginPage page.
 
@@ -35,17 +32,15 @@ export class HomePage {
   selectedCategories: number = 0;
 
   constructor(public nav: NavController,
-    public postService: PostService,
-    protected authService: AuthProvider,
-    public modalCtrl: ModalController,
-    public cats: CategoryProvider,
-    protected alert: AlertController,
-    protected tipp: DailytippProvider,
-    protected auth:AuthProvider,
-    protected loading: LoadingController
+              public postService: PostService,
+              protected authService: AuthProvider,
+              public modalCtrl: ModalController,
+              public cats: CategoryProvider,
+              protected alert: AlertController,
+              protected tipp: DailytippProvider,
+              protected auth: AuthProvider,
+              protected loading: LoadingController) {
 
-  ) {
-   
   }
 
   ionViewDidLoad() {
@@ -75,14 +70,13 @@ export class HomePage {
 
   // on click, go to post detail
   viewPost(postId) {
-    this.nav.push(PostPage, { id: postId })
+    this.nav.push(PostPage, {id: postId})
   }
 
   // on click, go to user timeline
   viewUser(userId) {
-    this.nav.push(UserPage, { id: userId })
+    this.nav.push(UserPage, {id: userId})
   }
-
 
 
   doAction(cat) {
@@ -101,49 +95,76 @@ export class HomePage {
 
   addPosition(cat) {
     let loading = this.loading.create();
-    let modal = this.modalCtrl.create(PositionComponent, { showCategories: false, showText: true, title: cat.menu, category: cat });
+    let modal = this.modalCtrl.create(PositionComponent, {
+      showCategories: false,
+      showText: true,
+      title: cat.menu,
+      category: cat
+    });
     modal.onDidDismiss((data) => {
       if (data == false || data == undefined) {
         return;
       }
       loading.present();
-      return this.postService.createFromPosition(data).then(() => { loading.dismiss() }).catch(() => { 
-        loading.dismiss(); 
-        let alert = this.alert.create({title: 'Oops', subTitle: 'Beitrag konnte nicht erstellt werden. Probiere es doch nochmal!', buttons: ['OK']})
+      return this.postService.createFromPosition(data).then(() => {
+        loading.dismiss()
+      }).catch(() => {
+        loading.dismiss();
+        this.alert.create({
+          title: 'Oops',
+          subTitle: 'Beitrag konnte nicht erstellt werden. Probiere es doch nochmal!',
+          buttons: ['OK']
+        }).present();
       });
     })
     modal.present();
   }
 
 
-
   addIssue(cat) {
-    let modal = this.modalCtrl.create(CameraComponent, { showCategories: false, showText: true, title: cat.menu, category: cat });
+    let modal = this.modalCtrl.create(CameraComponent, {
+      showCategories: false,
+      showText: true,
+      title: cat.menu,
+      category: cat
+    });
     let loading = this.loading.create();
     modal.onDidDismiss((data) => {
       if (data == false || data == undefined) {
         return;
       }
-      return this.postService.createFromCamera(data).then(() => { loading.dismiss() }).catch(() => { 
-        loading.dismiss(); 
-        let alert = this.alert.create({title: 'Oops', subTitle: 'Beitrag konnte nicht erstellt werden. Probiere es doch nochmal!', buttons: ['OK']})
-      });;
-    })
+      return this.postService.createFromCamera(data).then(() => {
+        loading.dismiss()
+      }).catch(() => {
+        loading.dismiss();
+        this.alert.create({
+          title: 'Oops',
+          subTitle: 'Beitrag konnte nicht erstellt werden. Probiere es doch nochmal!',
+          buttons: ['OK']
+        }).present();
+      });
+    });
     modal.present();
   }
 
   addTracking(cat) {
-    let modal = this.modalCtrl.create(TrackingComponent, { title: cat.menu, category: cat });
+    let modal = this.modalCtrl.create(TrackingComponent, {title: cat.menu, category: cat});
     let loading = this.loading.create();
     modal.onDidDismiss((data) => {
       console.log(data);
       if (data == false || data == undefined) {
         return;
       }
-      return this.postService.createFromTracking(data).then(() => { loading.dismiss() }).catch(() => { 
-        loading.dismiss(); 
-        let alert = this.alert.create({title: 'Oops', subTitle: 'Beitrag konnte nicht erstellt werden. Probiere es doch nochmal!', buttons: ['OK']})
-      });;
+      return this.postService.createFromTracking(data).then(() => {
+        loading.dismiss()
+      }).catch(() => {
+        loading.dismiss();
+        this.alert.create({
+          title: 'Oops',
+          subTitle: 'Beitrag konnte nicht erstellt werden. Probiere es doch nochmal!',
+          buttons: ['OK']
+        }).present();
+      });
     })
     modal.present();
   }

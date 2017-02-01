@@ -1,16 +1,14 @@
-import { AuthProvider } from './auth-provider';
-import { ApiProvider } from './api-provider';
-import { Geolocation } from 'ionic-native';
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {AuthProvider} from './auth-provider';
+import {ApiProvider} from './api-provider';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the ChallengeProvider provider.
+ Generated class for the ChallengeProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular 2 DI.
+ */
 @Injectable()
 export class ChallengeProvider {
 
@@ -18,7 +16,7 @@ export class ChallengeProvider {
   regularchallenges: any[];
   oncechallenges: any[];
 
-  constructor(protected apiService: ApiProvider, protected auth:AuthProvider) {
+  constructor(protected apiService: ApiProvider, protected auth: AuthProvider) {
   }
 
   load() {
@@ -33,7 +31,7 @@ export class ChallengeProvider {
 
   getItem(id) {
     return new Promise(resolve => {
-      this.apiService.get('/challenge', { challengeId: id }).then((response) => {
+      this.apiService.get('/challenge', {challengeId: id}).then((response) => {
         resolve(response);
       })
     })
@@ -42,7 +40,6 @@ export class ChallengeProvider {
 
   createStepResult(challenge, step, modalData) {
     return new Promise((resolve, reject) => {
-      let response;
       if (step.type == 'camera') {
         this.apiService.upload('/challenge', modalData.picture, {
           challenge: challenge.id,

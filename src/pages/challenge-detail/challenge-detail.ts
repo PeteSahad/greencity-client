@@ -1,7 +1,5 @@
 import { PositionComponent } from './../../components/position/position';
 import { TrackingComponent } from './../../components/tracking/tracking';
-import { User } from './../../providers/auth-provider';
-import { Toast } from 'ionic-native';
 import { CameraComponent } from './../../components/camera/camera';
 import { ChallengeProvider } from './../../providers/challenge-provider';
 import { Component } from '@angular/core';

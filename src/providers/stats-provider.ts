@@ -29,7 +29,7 @@ export class StatsProvider {
     let charts = [
 
     ];
-    
+
     Object.keys(stats).forEach((key) => {
       charts.push({
         label: this.getLabelsFromData(stats.key),
@@ -37,14 +37,13 @@ export class StatsProvider {
         type: 'line'
       })
     });
-    
+
 
   }
 
   getLinesFromData(data:any[]) {
-    let lines = []
     data.forEach((tmpLine) => {
-      
+
     })
 
     let datapoints = [];

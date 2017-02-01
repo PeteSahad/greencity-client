@@ -1,23 +1,20 @@
-import { AuthProvider } from './auth-provider';
-import { Geolocation, Transfer } from 'ionic-native';
-import { Observable } from 'rxjs/Observable';
-import { Injectable } from '@angular/core';
-import { AlertController, Platform } from 'ionic-angular';
-import { Http } from '@angular/http';
+import {AuthProvider} from './auth-provider';
+import {Geolocation, Transfer} from 'ionic-native';
+import {Injectable} from '@angular/core';
+import {AlertController, Platform} from 'ionic-angular';
+import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the ApiProvider provider.
+ Generated class for the ApiProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular 2 DI.
+ */
 @Injectable()
 export class ApiProvider {
 
   private apiUrl: string = 'http://greencity.dnsv.eu'
-
-  private location: any;
 
   constructor(public http: Http, protected alert: AlertController, protected auth: AuthProvider, platform: Platform) {
     platform.ready().then(() => {
@@ -56,10 +53,10 @@ export class ApiProvider {
           }
         };
         return params;
-      }).then((params) => {
+      }).then((params: any) => {
 
         if (this.auth.user != undefined) {
-          Object.assign(params.params, { user: this.auth.user.id });
+          Object.assign(params.params, {user: this.auth.user.id});
         }
 
         let keys = Object.keys(options);
@@ -90,7 +87,7 @@ export class ApiProvider {
         }
       }).then(() => {
         if (this.auth.user != undefined) {
-          Object.assign(body, { user: this.auth.user.id });
+          Object.assign(body, {user: this.auth.user.id});
         }
       }).then(() => {
         return this.http.post(this.apiUrl + url, body, options).map(res => res.json()).subscribe(value => {
@@ -105,7 +102,6 @@ export class ApiProvider {
     })
 
 
-
   }
 
   get(url, params, options?) {
@@ -117,7 +113,7 @@ export class ApiProvider {
         });
 
         if (this.auth.user != undefined) {
-          Object.assign(params, { user: this.auth.user.id });
+          Object.assign(params, {user: this.auth.user.id});
         }
 
         return params;
@@ -137,7 +133,6 @@ export class ApiProvider {
             reject(error);
           });
       })
-
 
 
     })

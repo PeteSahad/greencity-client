@@ -1,6 +1,5 @@
 import { AuthProvider, User } from './../../providers/auth-provider';
 import { ApiProvider } from './../../providers/api-provider';
-import { RankingPage } from './../../../.tmp/pages/ranking/ranking';
 import { ViewController, NavParams, AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
@@ -50,10 +49,10 @@ export class WelcomeSliderComponent {
   }
   ];
 
-  
+
   constructor(protected viewCtrl:ViewController, navParams:NavParams, protected api:ApiProvider, protected auth:AuthProvider, protected alert: AlertController) {
     this.username = this.auth.user.username;
-    this.plz = this.auth.user.district.name;     
+    this.plz = this.auth.user.district.name;
   }
 
   closeSlider() {
@@ -67,7 +66,7 @@ export class WelcomeSliderComponent {
       })
       alert.present();
     });
-    
+
   }
 
 }

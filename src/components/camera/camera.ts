@@ -1,15 +1,15 @@
-import { AuthProvider } from './../../providers/auth-provider';
-import { CategoryProvider } from './../../providers/category-provider';
-import { ViewController, NavParams, Platform, Keyboard, AlertController } from 'ionic-angular';
-import { Component, NgZone } from '@angular/core';
-import { Camera as C, CameraPreview, Toast, CameraPreviewRect } from 'ionic-native';
+import {AuthProvider} from './../../providers/auth-provider';
+import {CategoryProvider} from './../../providers/category-provider';
+import {ViewController, NavParams, Platform, Keyboard, AlertController} from 'ionic-angular';
+import {Component, NgZone} from '@angular/core';
+import {Camera as C} from 'ionic-native';
 
 /*
-  Generated class for the PictureAction component.
+ Generated class for the PictureAction component.
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
-*/
+ See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ for more info on Angular 2 Components.
+ */
 
 declare var cordova;
 declare var Camera: any;
@@ -28,10 +28,10 @@ export class CameraComponent {
   height: number = 100;
 
   static buttons = {
-    switchCamera: { 'color': 'secondary', 'icon': 'sync', 'action': 'switchCamera' },
-    takePicture: { 'color': 'primary', 'icon': 'camera', 'action': 'takePicture' },
-    reDoPicture: { 'color': 'danger', 'icon': 'refresh', 'action': 'reDoPicture' },
-    acceptPicture: { 'color': 'primary', 'icon': 'ios-share', 'action': 'acceptPicture' },
+    switchCamera: {'color': 'secondary', 'icon': 'sync', 'action': 'switchCamera'},
+    takePicture: {'color': 'primary', 'icon': 'camera', 'action': 'takePicture'},
+    reDoPicture: {'color': 'danger', 'icon': 'refresh', 'action': 'reDoPicture'},
+    acceptPicture: {'color': 'primary', 'icon': 'ios-share', 'action': 'acceptPicture'},
   }
 
   primaryActionButton: any = CameraComponent.buttons.acceptPicture;
@@ -43,16 +43,14 @@ export class CameraComponent {
   cameraRunning: boolean = false;
   title: string;
 
-  constructor(
-    protected viewCtrl: ViewController,
-    protected params: NavParams,
-    protected platform: Platform,
-    protected zone: NgZone,
-    public keyboard: Keyboard,
-    protected cats: CategoryProvider,
-    protected auth: AuthProvider,
-    protected alert: AlertController
-  ) {
+  constructor(protected viewCtrl: ViewController,
+              protected params: NavParams,
+              protected platform: Platform,
+              protected zone: NgZone,
+              public keyboard: Keyboard,
+              protected cats: CategoryProvider,
+              protected auth: AuthProvider,
+              protected alert: AlertController) {
 
     this.showCategories = params.get('showCategories');
     this.showText = params.get('showText');
@@ -99,12 +97,18 @@ export class CameraComponent {
       })
       return alert.present()
     } else if (this.category == undefined && this.showCategories == false) {
-      this.viewCtrl.dismiss({ picture: this.picture, text: this.text, user: this.auth.user.id, type: 'camera' });
+      this.viewCtrl.dismiss({picture: this.picture, text: this.text, user: this.auth.user.id, type: 'camera'});
     } else {
-      if(this.category.id != undefined) {
+      if (this.category.id != undefined) {
         this.category = this.category.id
       }
-      this.viewCtrl.dismiss({ picture: this.picture, category: this.category, text: this.text, user: this.auth.user.id, type: 'camera' });
+      this.viewCtrl.dismiss({
+        picture: this.picture,
+        category: this.category,
+        text: this.text,
+        user: this.auth.user.id,
+        type: 'camera'
+      });
     }
 
     //this.picture = false; #reset for next picture?

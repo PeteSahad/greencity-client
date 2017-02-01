@@ -1,7 +1,5 @@
 import { ApiProvider } from './api-provider';
-import { Geolocation } from 'ionic-native';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*

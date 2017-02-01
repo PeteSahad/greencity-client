@@ -1,16 +1,15 @@
-import { AlertController } from 'ionic-angular';
-import { ApiProvider } from './api-provider';
-import { AuthProvider } from './auth-provider';
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {AlertController} from 'ionic-angular';
+import {ApiProvider} from './api-provider';
+import {AuthProvider} from './auth-provider';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 /*
-  Generated class for the DailytippProvider provider.
+ Generated class for the DailytippProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular 2 DI.
+ */
 @Injectable()
 export class DailytippProvider {
 
@@ -28,7 +27,7 @@ export class DailytippProvider {
     //Nutzer registriert?
     if (this.auth.user != undefined) {
       this.showDailyTipp();
-    } 
+    }
   }
 
   showDailyTipp() {
@@ -64,14 +63,14 @@ export class DailytippProvider {
 
   showShowSurvey() {
 
-    if(this.alreadyShowed != undefined || this.auth.user == undefined || this.auth.user.created_at == undefined) {
+    if (this.alreadyShowed != undefined || this.auth.user == undefined || this.auth.user.created_at == undefined) {
       return;
     }
     let date = new Date();
     let createDate = new Date(this.auth.user.created_at);
     let day = createDate.getDate()
     createDate.setDate(day + 14);
-    if(day > createDate.getDate()) {
+    if (day > createDate.getDate()) {
       createDate.setMonth(createDate.getMonth() + 1);
     }
 
@@ -92,7 +91,7 @@ export class DailytippProvider {
       alert.present();
       this.alreadyShowed = true;
 
-      
+
     }
 
 

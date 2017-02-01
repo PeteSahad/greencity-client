@@ -1,7 +1,4 @@
-import { Object2array } from './../../pipes/object2array';
-import { ChartsModule } from 'ng2-charts';
 import { AuthProvider } from './../../providers/auth-provider';
-import { UserService } from './../../services/user-service';
 import { StatsProvider } from './../../providers/stats-provider';
 
 import { Component, Pipe, PipeTransform, NgZone } from '@angular/core';

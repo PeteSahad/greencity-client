@@ -80,12 +80,12 @@ import { ChallengesPage} from '../pages/challenges/challenges';
     RankingPage,
     EcoHeaderComponent,
     ChallengeItemComponent,
-    
+
 ],
   imports: [
-    IonicModule.forRoot(MyApp),   
+    IonicModule.forRoot(MyApp),
     ChartModule,
-    
+
     /**AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAzXT3w21lVFijawEkfd9mG4za9gTNV-yQ'
     }) */

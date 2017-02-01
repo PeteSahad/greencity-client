@@ -1,12 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import {Component, Input} from '@angular/core';
 /*
-  Generated class for the Progressbar component.
+ Generated class for the Progressbar component.
 
-  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
-  for more info on Angular 2 Components.
-*/
+ See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+ for more info on Angular 2 Components.
+ */
 @Component({
   selector: 'progressbar',
   templateUrl: 'progressbar.html',
@@ -55,7 +53,7 @@ export class ProgressbarComponent {
 
     drawCircle('#efefef', options.lineWidth, 100 / 100);
     drawCircle('#555555', options.lineWidth, parseInt(options.percent) / 100);
-    
+
   }
 
 }
